@@ -30,3 +30,12 @@
 *.exe
 *.out
 *.app
+
+#Arduino
+*.svd
+debug.cfg
+debug_custom.json
+.development
+
+#other
+.vscode

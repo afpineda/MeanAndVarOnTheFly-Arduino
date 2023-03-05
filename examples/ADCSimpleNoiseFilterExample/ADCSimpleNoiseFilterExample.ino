@@ -10,7 +10,7 @@
  // Count of samples for the ADC reading
 #define SAMPLE_SIZE 50
 
-// Global variables for simplification
+// Variables are global for simplification
 MeanAndVar<int> population;
 int steadyMean = 0;
 bool firstRun = true;

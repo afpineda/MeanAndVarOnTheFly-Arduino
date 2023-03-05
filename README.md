@@ -7,7 +7,7 @@ Based on [Welford's online algorithm](https://en.wikipedia.org/wiki/Algorithms_f
 
 ## How to use
 
-There is just one class template, `MeanAndVar`, that should be instantiated to a numerical data type. **Be warned**: unexpected results may arise when using unsigned data types. Typical uses are (for example):
+There is just one class template, `MeanAndVar`, that should be instantiated to a **signed** numerical data type. Typical uses are (for example):
 
 ```c++
 #include<MeanAndVarOnTheFly.h>
@@ -18,6 +18,6 @@ MeanAndVar<float> realNumberPopulation;
 
 Check the [examples folder](./examples) for some usage cases, mostly **filters** for [ADC](https://en.wikipedia.org/wiki/Analog-to-digital_converter) readings.
 
-You can reuse an existing object to compute a new mean and variance by calling `reset()`. Add samples to your population using `add()`, then retrive the mean and variance with `getMean()`, `getUnbiasedVariance()` and `getVariance()`. Call `getCount()` to check the size of the statistical population.
+You can reuse an existing object to compute a new mean and variance by calling `reset()`. Add samples to your population using `add()`, then retrive the mean and variance with `getMean()`, `getUnbiasedVariance()` and `getVariance()`. Call `getCount()` to know the size of the statistical population.
 
 Check code commentaries for further information.

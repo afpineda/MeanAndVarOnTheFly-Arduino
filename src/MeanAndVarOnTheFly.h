@@ -10,7 +10,7 @@
 #include <type_traits>
 
 /**
- * @brief Compute "on-the-fly" the arithmetic mean and variance of an statistical population
+ * @brief Compute "on-the-fly" the arithmetic mean and variance of a statistical population
  *
  * @note Individual values are **not** stored in memory.
  *
@@ -105,7 +105,7 @@ public:
     /**
      * @brief Get the current size of the population
      *
-     * @return unsigned long int Count of samples in the statistical population
+     * @return Number Count of samples in the statistical population
      */
     Number getCount()
     {

@@ -6,8 +6,20 @@
 
 #include <Arduino.h>
 #include <MeanAndVarOnTheFly.h>
+#include <cmath>
  
- // Count of samples for the ADC reading
+// ADC Pin
+// Change as you wish
+#define ANALOG_PIN 36
+
+// FILTER_STRENGTH must be a positive value.
+// Higher values will filter more noise but at the cost of slower response to changes.
+// Lower values (close to 0.0) means low filtering and quick response to changes.
+// Set as you wish.
+#define FILTER_STRENGTH (double)1.3f
+
+// Count of samples for the ADC reading
+// No need to touch
 #define SAMPLE_SIZE 50
 
 // Variables are global for simplification
@@ -40,19 +52,16 @@ int noiseFilteredAnalogRead(const int adcPin) {
 
     // Get the absolute difference between the current reading
     // and the last filter result
-    int diff = (steadyMean>newMean) ? (steadyMean - newMean) : (newMean - steadyMean);
+    double diff = (steadyMean>newMean) ? (steadyMean - newMean) : (newMean - steadyMean);
 
     // Update the filter's result only if the current mean is out of the
-    // range (steadyMean-variance,steadyMean+variance)
-    if (diff>population.getUnbiasedVariance())
+    // range (steadyMean-FILTER_STRENGTH*standardDeviation,steadyMean+FILTER_STRENGTH*standardDeviation)
+    double stdev = sqrt(population.getUnbiasedVariance());
+    if (diff>(FILTER_STRENGTH*stdev))
       steadyMean = newMean;
   }
   return steadyMean;
 }
-
-// ADC Pin
-// Change as you wish
-#define ANALOG_PIN 36
 
 void setup()
 {

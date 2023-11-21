@@ -14,7 +14,7 @@
  *
  * @note Individual values are **not** stored in memory.
  *
- * @tparam Number An arithmetic type (int, float, etc.). Do not use unsigned types.
+ * @param Number An arithmetic type (int, float, etc.). Do not use unsigned types.
  */
 template <typename Number = int, class = typename std::enable_if<std::is_signed<Number>::value>::type>
 class MeanAndVar
@@ -65,7 +65,7 @@ public:
     /**
      * @brief Get the arithmetic mean of the population.
      *
-     * @return Number Current arithmetic mean or zero if there is no population.
+     * @return Current arithmetic mean or zero if there is no population.
      */
     Number getMean()
     {
@@ -73,12 +73,12 @@ public:
     };
 
     /**
-     * @brief Get the unbiased variance of the population. 
+     * @brief Get the unbiased variance of the population.
      *        The unbiased variance is an estimator of the variance to be used
      *        if the whole population is unknown.
      *
      * @note Uses [Welford's online algorithm](https://en.wikipedia.org/wiki/Algorithms_for_calculating_variance#Welford's_online_algorithm).
-     * @return Number Current unbiased variance or zero if population' size is less than two samples
+     * @return Current unbiased variance or zero if population' size is less than two samples
      */
     Number getUnbiasedVariance()
     {
@@ -92,7 +92,7 @@ public:
      * @brief Get the (biased) variance of the population
      *
      * @note Uses [Welford's online algorithm](https://en.wikipedia.org/wiki/Algorithms_for_calculating_variance#Welford's_online_algorithm).
-     * @return Number Current variance or zero if population' size is less than two samples
+     * @return Current variance or zero if population' size is less than two samples
      */
     Number getVariance()
     {
@@ -105,7 +105,7 @@ public:
     /**
      * @brief Get the current size of the population
      *
-     * @return Number Count of samples in the statistical population
+     * @return Count of samples in the statistical population
      */
     Number getCount()
     {

@@ -6,6 +6,7 @@
 
 #include<Arduino.h>
 #include<MeanAndVarOnTheFly.h>
+#include<CovarianceOnTheFly.h>
 
 void assert_equals(int expected, int actual, int testNumber)
 {
@@ -66,6 +67,17 @@ void setup()
     assert_equals(46,pop.getUnbiasedVariance(),testNumber++);
     assert_equals(34,pop.getVariance(),testNumber++);
 
+    Covariance<int> cov;
+    cov.add(3,65);
+    cov.add(5,85);
+    cov.add(2,65);
+    cov.add(7,90);
+    cov.add(4,75);
+    Serial.println("* Covariance");
+
+    Serial.println("** 5th");
+    assert_equals(5,cov.getCount(),testNumber++);
+    assert_equals(22,cov.getCurrent(),testNumber++);
 
     Serial.println("--END OF TEST--");
 }
